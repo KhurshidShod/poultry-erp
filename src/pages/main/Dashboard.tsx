@@ -5,7 +5,6 @@ import {
   AlertTriangle,
   Bird,
   CalendarDays,
-  ChevronRight,
   Download,
   Egg,
   Factory,

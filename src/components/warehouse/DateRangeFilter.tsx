@@ -1,8 +1,6 @@
 
 import {
   CalendarDays,
-  ChevronLeft,
-  ChevronRight,
 } from "lucide-react";
 
 export type DatePreset =
@@ -101,17 +99,6 @@ export default function DateRangeFilter({
   const valid =
     Boolean(range.start && range.end) &&
     range.start <= range.end;
-
-  const shiftDay = (amount: number) => {
-    const today = new Date();
-    const next = new Date(
-      today.getFullYear(),
-      today.getMonth(),
-      today.getDate() + amount
-    );
-
-    onChange("today", presetRange("today", next));
-  };
 
   return (
     <section className="surface-card p-4 sm:p-5">

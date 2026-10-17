@@ -18,7 +18,6 @@ import {
   Settings,
   ArrowLeftRight,
   Layers3,
-  Package,
   type LucideIcon,
 } from "lucide-react";
 
