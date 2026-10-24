@@ -13,7 +13,7 @@ import DateRangeFilter, {
   presetRange,
   type DatePreset,
   type DateRange,
-} from "../../components/warehouse/DateRangeFilter";
+} from '../../components/warehouse/DateRangeFilter';
 import { usePoultry } from '../../context/PoultryContext';
 import {
   useVeterinary,
@@ -74,12 +74,11 @@ export default function Veterinary() {
   const [filterBatch, setFilterBatch] = useState('all');
 
   const [filterType, setFilterType] = useState('all');
+  const [datePreset, setDatePreset] = useState<DatePreset>('today');
 
-const [datePreset, setDatePreset] =
-  useState<DatePreset>("today");
-
-const [dateRange, setDateRange] =
-  useState<DateRange>(() => presetRange("today"));
+  const [dateRange, setDateRange] = useState<DateRange>(() =>
+    presetRange('today')
+  );
 
   const selectedBatch = batches.find((batch) => batch.id === batchId);
   const selectedMedicine = medicines.find((item) => item.id === medicineId);
@@ -91,20 +90,17 @@ const [dateRange, setDateRange] =
 
       if (filterType !== 'all' && record.type !== filterType) return false;
 
-if (
-  !dateRange.start ||
-  !dateRange.end ||
-  dateRange.start > dateRange.end
-) {
-  return false;
-}
+      if (
+        !dateRange.start ||
+        !dateRange.end ||
+        dateRange.start > dateRange.end
+      ) {
+        return false;
+      }
 
-if (
-  record.date < dateRange.start ||
-  record.date > dateRange.end
-) {
-  return false;
-}
+      if (record.date < dateRange.start || record.date > dateRange.end) {
+        return false;
+      }
 
       return true;
     })
@@ -318,14 +314,14 @@ if (
       <VeterinaryInventoryPanel />
       {/* VETERINARIYA HISOBOT DAVRI */}
 
-<DateRangeFilter
-  preset={datePreset}
-  range={dateRange}
-  onChange={(preset, range) => {
-    setDatePreset(preset);
-    setDateRange(range);
-  }}
-/>
+      <DateRangeFilter
+        preset={datePreset}
+        range={dateRange}
+        onChange={(preset, range) => {
+          setDatePreset(preset);
+          setDateRange(range);
+        }}
+      />
       <section className="surface-card overflow-hidden">
         <div className="space-y-4 border-b border-border-custom p-5">
           <div>
@@ -333,9 +329,44 @@ if (
             <p className="mt-1 text-xs text-muted">
               Partiya, tur va sana bo'yicha filtr
             </p>
+            <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+              <div>
+                <label className="form-label">Parranda partiyasi</label>
+
+                <select
+                  className="form-input"
+                  value={filterBatch}
+                  onChange={(e) => setFilterBatch(e.target.value)}
+                >
+                  <option value="all">Barcha partiyalar</option>
+
+                  {batches.map((batch) => (
+                    <option key={batch.id} value={batch.id}>
+                      {batch.code}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label className="form-label">Tadbir turi</label>
+
+                <select
+                  className="form-input"
+                  value={filterType}
+                  onChange={(e) => setFilterType(e.target.value)}
+                >
+                  <option value="all">Barcha turlar</option>
+
+                  {VETERINARY_TYPES.map((item) => (
+                    <option key={item.value} value={item.value}>
+                      {item.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
           </div>
-
-
 
           <div className="flex flex-wrap justify-between gap-2 text-sm">
             <span className="text-muted">
@@ -685,12 +716,12 @@ if (
                 </button>
 
                 <button
-  type="submit"
-  className="primary-button"
-  disabled={saving}
->
-  {saving ? "Saqlanmoqda..." : "Saqlash"}
-</button>
+                  type="submit"
+                  className="primary-button"
+                  disabled={saving}
+                >
+                  {saving ? 'Saqlanmoqda...' : 'Saqlash'}
+                </button>
               </div>
             </form>
           </div>
