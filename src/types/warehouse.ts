@@ -30,6 +30,17 @@ export interface Purchase {
   quantity: number;
   unitPrice: number;
   status: "received" | "draft";
+  paidAmount?: number;
+  paymentMethod?: "cash" | "card" | "bank";
+}
+
+export interface PurchasePayment {
+  id: string;
+  purchaseId: string;
+  date: string;
+  amount: number;
+  method: "cash" | "card" | "bank";
+  createdAt: string;
 }
 
 export interface IngredientUsage {

@@ -24,6 +24,7 @@ import {
   formatNumber,
   useWarehouse,
 } from '../../context/WarehouseContext';
+import MoneyInput from '../../components/ui/MoneyInput';
 const nowInput = () => {
   const d = new Date();
   return new Date(d.getTime() - d.getTimezoneOffset() * 60000)
@@ -288,14 +289,13 @@ export default function FeedInventory() {
             </label>
             <label>
               <span className="form-label">Tannarx/kg</span>
-              <input
+              <MoneyInput
                 required
-                type="number"
                 min="0"
                 step="any"
                 className="form-input"
                 value={form.unitCost}
-                onChange={(e) => setForm({ ...form, unitCost: e.target.value })}
+                onChange={(value) => setForm({ ...form, unitCost: value })}
               />
             </label>
           </div>

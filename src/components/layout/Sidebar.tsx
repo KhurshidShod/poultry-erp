@@ -175,7 +175,7 @@ export default function Sidebar({
                 key={group.id}
                 className={`
     mb-5
-    ${collapsed ? 'lg:mb-3 lg:border-b lg:border-[#252525] lg:pb-3' : ''}
+    ${collapsed ? 'lg:mb-3 lg:border-b lg:border-border-custom lg:pb-3' : ''}
   `}
               >
                 {/* Group heading */}
@@ -253,7 +253,7 @@ className={`
             </div>
 
             <div className={`min-w-0 flex-1 ${collapsed ? 'lg:hidden' : ''}`}>
-              <p className="truncate text-[12px] font-medium text-white">
+              <p className="truncate text-[12px] font-medium text-text-main">
                 Administrator
               </p>
               <p className="text-[11px] text-[#A1A1A1]">Boshqaruvchi</p>

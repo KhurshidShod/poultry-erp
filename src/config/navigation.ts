@@ -1,25 +1,30 @@
+import type { LucideIcon } from 'lucide-react';
 
 import {
-  LayoutDashboard,
-  Warehouse,
-  ShoppingCart,
-  Factory,
-  Wheat,
-  Bird,
-  Egg,
+  ArrowLeftRight,
   Beef,
+  Bird,
+  Boxes,
+  Building2,
+  ChartNoAxesCombined,
+  ClipboardList,
+  ContactRound,
+  Egg,
+  Factory,
+  FileBarChart,
+  Layers3,
+  LayoutDashboard,
+  Package,
+  Settings,
+  ShoppingCart,
   Syringe,
   Users,
-  Zap,
   Wallet,
-  ChartNoAxesCombined,
-  FileBarChart,
-  ContactRound,
-  Settings,
-  ArrowLeftRight,
-  Layers3,
-  type LucideIcon,
-} from "lucide-react";
+  Warehouse,
+  Wheat,
+  Wrench,
+  Zap,
+} from 'lucide-react';
 
 export interface NavigationItem {
   title: string;
@@ -35,146 +40,211 @@ export interface NavigationGroup {
 }
 
 export const navigation: NavigationGroup[] = [
-  // ==============================
+  // ========================================
   // ASOSIY
-  // ==============================
+  // ========================================
   {
-    id: "main",
-    label: "Asosiy",
+    id: 'main',
+    label: 'Asosiy',
     icon: LayoutDashboard,
     items: [
       {
-        title: "Boshqaruv paneli",
-        path: "/",
+        title: 'Boshqaruv paneli',
+        path: '/',
         icon: LayoutDashboard,
       },
     ],
   },
 
-  // ==============================
+  // ========================================
   // OMBOR VA ISHLAB CHIQARISH
-  // ==============================
+  // ========================================
   {
-    id: "warehouse-production",
-    label: "Ombor va ishlab chiqarish",
+    id: 'warehouse-production',
+    label: 'Ombor va ishlab chiqarish',
     icon: Warehouse,
     items: [
       {
-        title: "Asosiy ombor",
-        path: "/warehouse",
+        title: 'Asosiy ombor',
+        path: '/warehouse',
         icon: Warehouse,
       },
       {
-        title: "Xaridlar",
-        path: "/purchases",
+        title: 'Xaridlar',
+        path: '/purchases',
         icon: ShoppingCart,
       },
       {
-        title: "Yem ishlab chiqarish",
-        path: "/feed-production",
+        title: 'Yem ishlab chiqarish',
+        path: '/feed-production',
         icon: Factory,
       },
       {
-        title: "Yem zaxiralari",
-        path: "/feed-inventory",
+        title: 'Yem zaxiralari',
+        path: '/feed-inventory',
         icon: Wheat,
       },
       {
-        title: "Ombor harakatlari",
-        path: "/inventory-transfers",
+        title: 'Ombor harakatlari',
+        path: '/inventory-transfers',
         icon: ArrowLeftRight,
+      },
+      {
+        title: 'Fermalar yem zaxirasi',
+        path: '/farm-feed-inventory',
+        icon: Building2,
       },
     ],
   },
 
-  // ==============================
+  // ========================================
   // PARRANDACHILIK
-  // ==============================
+  // ========================================
   {
-    id: "poultry",
-    label: "Parrandachilik",
+    id: 'poultry',
+    label: 'Parrandachilik',
     icon: Bird,
     items: [
       {
-        title: "Parrandalar",
-        path: "/chickens",
-        icon: Bird,
+        title: 'Parranda partiyalari',
+        path: '/chicken-batches',
+        icon: Layers3,
       },
       {
-        title: "Tuxum ishlab chiqarish",
-        path: "/eggs",
-        icon: Egg,
-      },
-      {
-        title: "Go'sht yetishtirish",
-        path: "/meat",
-        icon: Beef,
-      },
-      {
-        title: "Veterinariya",
-        path: "/veterinary",
+        title: 'Veterinariya',
+        path: '/veterinary',
         icon: Syringe,
       },
-    ],
-  },
-
-  // ==============================
-  // MOLIYA VA BOSHQARUV
-  // ==============================
-  {
-    id: "finance",
-    label: "Moliya va boshqaruv",
-    icon: Wallet,
-    items: [
       {
-        title: "Savdo",
-        path: "/sales",
-        icon: ShoppingCart,
-      },
-      {
-        title: "Xodimlar",
-        path: "/employees",
-        icon: Users,
-      },
-      {
-        title: "Kommunal xarajatlar",
-        path: "/utilities",
-        icon: Zap,
-      },
-      {
-        title: "Moliya",
-        path: "/finance",
-        icon: Wallet,
-      },
-      {
-        title: "Foyda va zarar",
-        path: "/profit-loss",
+        title: 'Tuxum ishlab chiqarish',
+        path: '/eggs',
         icon: ChartNoAxesCombined,
       },
       {
-        title: "Hisobotlar",
-        path: "/reports",
-        icon: FileBarChart,
+        title: "110 kunlik jo'jaxona",
+        path: '/egg-chick-house',
+        icon: Bird,
       },
       {
-        title: "Hamkorlar",
-        path: "/partners",
-        icon: ContactRound,
+        title: 'Tuxum fermasi №1',
+        path: '/egg-farm-1',
+        icon: Egg,
+      },
+      {
+        title: 'Tuxum fermasi №2',
+        path: '/egg-farm-2',
+        icon: Egg,
+      },
+      {
+        title: "Go'sht jo'jaxonasi",
+        path: '/meat',
+        icon: Beef,
+      },
+
+      // Veterinariya moduli tayyor bo'lgach
+      // qayta qo'shamiz:
+      //
+      // {
+      //   title: "Veterinariya",
+      //   path: "/veterinary",
+      //   icon: Syringe,
+      // },
+    ],
+  },
+
+  // ========================================
+  // MOLIYA VA BOSHQARUV
+  // ========================================
+  {
+    id: 'finance',
+    label: 'Moliya va boshqaruv',
+    icon: Wallet,
+    items: [
+      {
+        title: 'Savdo',
+        path: '/sales',
+        icon: ShoppingCart,
+      },
+      {
+        title: 'Moliya',
+        path: '/finance',
+        icon: Wallet,
+      },
+      {
+        title: 'Xodimlar',
+        path: '/employees',
+        icon: Users,
+      },
+      {
+        title: 'Kommunal xarajatlar',
+        path: '/utilities',
+        icon: Zap,
+      },
+      {
+        title: 'Texnika xarajatlari',
+        path: '/equipment-expenses',
+        icon: Wrench,
+      },
+      {
+        title: 'Foyda va zarar',
+        path: '/profit-loss',
+        icon: ChartNoAxesCombined,
+      },
+      {
+        title: 'Hisobotlar',
+        path: '/reports',
+        icon: FileBarChart,
       },
     ],
   },
 
-  // ==============================
-  // TIZIM
-  // ==============================
+  // ========================================
+  // MA'LUMOTLAR BOSHQARUVI
+  // ========================================
   {
-    id: "system",
-    label: "Tizim",
+    id: 'master-data',
+    label: "Ma'lumotlar boshqaruvi",
+    icon: Boxes,
+    items: [
+      {
+        title: 'Mahsulotlar',
+        path: '/products',
+        icon: Package,
+      },
+      {
+        title: 'Hamkorlar',
+        path: '/partners',
+        icon: ContactRound,
+      },
+      {
+        title: 'Yem turlari',
+        path: '/feed-types',
+        icon: Wheat,
+      },
+      {
+        title: 'Retseptlar',
+        path: '/recipes',
+        icon: ClipboardList,
+      },
+      {
+        title: "Omborlar va bo'limlar",
+        path: '/locations',
+        icon: Building2,
+      },
+    ],
+  },
+
+  // ========================================
+  // TIZIM
+  // ========================================
+  {
+    id: 'system',
+    label: 'Tizim',
     icon: Layers3,
     items: [
       {
-        title: "Sozlamalar",
-        path: "/settings",
+        title: 'Sozlamalar',
+        path: '/settings',
         icon: Settings,
       },
     ],
